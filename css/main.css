@@ -1,0 +1,239 @@
+/*Обнуление*/
+* {
+   padding: 0;
+   margin: 0;
+   border: 0;
+   box-sizing: border-box;
+}
+
+html,
+body {
+   height: 100vh;
+   color: #faebd7;
+   background-color: #1e1f26;
+   overflow: hidden;
+   text-align: center;
+}
+
+input,
+button,
+textarea {
+   font-family: inherit;
+}
+
+button {
+   cursor: pointer;
+}
+
+.btn {
+   color: #faebd7;
+   border: 3px solid #faebd7;
+   padding: 0.5rem 1rem;
+   font-size: 1.5rem;
+   background-color: transparent;
+}
+
+.btn:hover {
+   color: #29cef7;
+   border-color: #29cef7;
+}
+
+.screen {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   height: 100vh;
+   width: 100vw;
+   transition: margin 0.5s ease-out;
+   background-color: #011623;
+}
+
+ul,
+li {
+   display: block;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+p {
+   margin: 0;
+   padding: 0;
+}
+
+a {
+   text-decoration: none;
+   color: #000;
+}
+
+img {
+   display: block;
+   object-fit: cover;
+   max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-size: 4rem;
+   line-height: 2.4;
+}
+
+.screen.up {
+   margin-top: -100vh;
+}
+
+.list {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.list li {
+   margin: 10px;
+}
+
+
+.stats {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   margin: 0 auto;
+   padding: 20px;
+}
+
+.stats div {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
+
+.stats div span {
+   margin-left: 10px;
+   color: #29cef7;
+}
+
+.lives {
+   display: flex;
+   gap: 10px;
+   align-items: center;
+}
+
+.lives .heart {
+   width: 20px;
+   height: 20px;
+}
+
+.lives .heart.dead {
+   opacity: 0.5;
+}
+
+.board {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+   width: 100%;
+   flex: 1;
+   background-color: #031e2e;
+   overflow: hidden;
+   /* cursor: url("aim.png") 25 25, auto; */
+
+}
+
+.options {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   padding: 20px;
+}
+
+#minimize {
+   display: none;
+}
+
+.circle {
+   /* width: 50px;
+   height: 50px; */
+   position: absolute;
+   background-color: #29cef7;
+   animation: circle 2s linear forwards;
+   border-radius: 50%;
+
+}
+
+@keyframes circle {
+   100% {
+      transform: scale(0);
+   }
+}
+
+.results {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 30px;
+   margin-bottom: 20px;
+}
+
+.results p {
+   font-size: 2rem;
+}
+
+.results p span {
+   color: #29cef7;
+   margin-left: 10px;
+}
+
+/*---RESPONSIVENESS------------------------------------------------------------------------------------------------------------*/
+@media (max-width: 767px) {
+   h1 {
+      font-size: 2rem;
+   }
+
+   .btn {
+      font-size: 1rem;
+   }
+
+   .stats {
+      gap: 20px;
+      flex-direction: column;
+   }
+
+   .stats div {
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+   }
+
+   .lives {
+      margin-bottom: 10px;
+   }
+}
+
+/*---PAGES---------------------------------------------------------------------------------------------------------------*/
+
+
+/*---HEADER--------------------------------------------------------------------------------------------------------------*/
+
+
+
+/*---MAIN-BLOCK------------------------------------------------------------------------------------------------------------*/
+
+
+/*---SECTION---------------------------------------------------------------------------------------------------------------*/
+
+/*---SECTION---------------------------------------------------------------------------------------------------------------*/
+
+/*---SECTION---------------------------------------------------------------------------------------------------------------*/
+
+/*---SECTION---------------------------------------------------------------------------------------------------------------*/
+
+/*---SECTION---------------------------------------------------------------------------------------------------------------*/

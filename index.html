@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Responsive -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Title -->
+   <title>AIM</title>
+   <!--SEO-->
+   <meta name="description" content="Лучшие виски в мире">
+   <meta name="keywords" content="ром, лучшие, виски">
+   <!-- OG Tags -->
+   <meta property="og:title" content="Glenfiddich">
+   <meta property="og:description" content="Лучшие виски в мире">
+   <meta property="og:type" content="article">
+   <meta property="og:image" content="img/head/preview.png">
+   <meta property="og:site_name" content="Glenfiddich">
+   <!-- Styling -->
+   <meta name="theme-color" content="#F2718E">
+   <link rel="apple-touch-icon" href="img/head/apple-touch-icon.png">
+   <link rel="icon" type="image/png" href="img/head/favicon.png">
+   <!-- Fonts -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Source+Serif+Pro:wght@400;600&display=swap"
+      rel="stylesheet">
+   <!-- Main Css -->
+   <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+   <div class="screen ">
+      <h1>Aim Trainer</h1>
+      <button class="btn" id="start">Start Game</button>
+   </div>
+   <div class="screen  ">
+      <h1>Choose Time</h1>
+      <ul class="list" id="time-list">
+         <li>
+            <button class="btn time-btn" data-time="10">10 sec</button>
+         </li>
+         <li>
+            <button class="btn time-btn" data-time="30">30 sec</button>
+         </li>
+         <li>
+            <button class="btn time-btn" data-time="60">1 min</button>
+         </li>
+         <li>
+            <button class="btn time-btn" data-time="120">2 min</button>
+         </li>
+         <li>
+            <button class="btn time-btn" data-unlimited="true">Unlimited</button>
+         </li>
+      </ul>
+   </div>
+   <div class="screen ">
+      <h1>Choose Difficulty</h1>
+      <ul class="list" id="difficulty-list">
+         <li>
+            <button class="btn difficulty-btn" data-difficulty="0">easy</button>
+         </li>
+         <li>
+            <button class="btn difficulty-btn" data-difficulty="1">medium</button>
+         </li>
+         <li>
+            <button class="btn difficulty-btn" data-difficulty="2">hard</button>
+         </li>
+      </ul>
+   </div>
+   <div class="screen ">
+      <div class="stats">
+         <div class="info">
+            <p>Time : <span id="time">00:00</span></p>
+            <p>Hits: <span id="hits">0</span></p>
+            <p>Accuracy: <span id="accuracy">100%</span></p>
+         </div>
+         <div class="lives">
+            <img src="img/heart.png" alt="" class="heart">
+            <img src="img/heart.png" alt="" class="heart">
+            <img src="img/heart.png" alt="" class="heart">
+         </div>
+      </div>
+      <div class="board" id="board">
+         <!-- <div class="circle"></div> -->
+      </div>
+      <div class="options">
+         <button class="btn restart">Restart</button>
+         <button class="btn" id="fullscreen">Full Screen</button>
+         <button class="btn" id="minimize">Minimize</button>
+      </div>
+   </div>
+   <div class="screen">
+      <h1>Game Over</h1>
+      <div class="results">
+         <p>Hits: <span id="hits-over">0</span></p>
+         <p>Accuracy: <span id="accuracy-over">0%</span></p>
+      </div>
+      <button class="btn restart">Restart</button>
+   </div>
+   <script src="js/main.js"></script>
+</body>
+
+</html>
