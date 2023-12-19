@@ -11,7 +11,10 @@ const startBtn = document.querySelector("#start"),
    hearts = document.querySelectorAll(".heart"),
    restartBtns = document.querySelectorAll(".restart"),
    fullScreenBtn = document.querySelector("#fullscreen"),
-   minimizeBtn = document.querySelector("#minimize");
+   minimizeBtn = document.querySelector("#minimize"),
+   backMenuBtn = document.querySelector(".btn-start-screen");
+
+
 
 let time = 0,
    unlimited = false,
@@ -239,4 +242,24 @@ function minimize() {
 
    minimizeBtn.style.display = 'none';
    fullScreenBtn.style.display = 'block';
+}
+
+backMenuBtn.addEventListener("click", startScreen);
+
+function startScreen() {
+   finishGame();
+   screens[0].classList.remove("up");
+   screens[1].classList.remove("up");
+   screens[2].classList.remove("up");
+   screens[3].classList.remove("up");
+   time = 0;
+   difficulty = 0;
+   hits = 0;
+   missed = 0;
+   accuracy = 0;
+   playing = false;
+   unlimited = false;
+   hearts.forEach((heart) => {
+      heart.classList.remove("dead");
+   });
 }

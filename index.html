@@ -33,9 +33,17 @@
 
 <body>
 
-   <div class="screen ">
+   <div class="screen start-screen">
       <h1>Aim Trainer</h1>
       <button class="btn" id="start">Start Game</button>
+      <iframe class="music-spotify" title="Spotify Embed: Recommendation Playlist"
+         src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0h2LvJ7ZJ15?utm_source=generator&theme=0"
+         frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+         loading="lazy"></iframe>
+      <div class="window-option">
+         <button class="btn" id="fullscreen">Full Screen</button>
+         <button class="btn" id="minimize">Minimize</button>
+      </div>
    </div>
    <div class="screen  ">
       <h1>Choose Time</h1>
@@ -89,17 +97,17 @@
       </div>
       <div class="options">
          <button class="btn restart">Restart</button>
-         <button class="btn" id="fullscreen">Full Screen</button>
-         <button class="btn" id="minimize">Minimize</button>
+
       </div>
    </div>
-   <div class="screen">
+   <div class="screen result-screen">
       <h1>Game Over</h1>
       <div class="results">
          <p>Hits: <span id="hits-over">0</span></p>
          <p>Accuracy: <span id="accuracy-over">0%</span></p>
       </div>
       <button class="btn restart">Restart</button>
+      <button class="btn btn-start-screen">Back to menu</button>
    </div>
    <script src="js/main.js"></script>
 </body>
