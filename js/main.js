@@ -185,7 +185,6 @@ function finishGame() {
 
    hitsOver.innerHTML = hits;
    accuracyOver.innerHTML = `${accuracy}%`;
-
 }
 
 
@@ -309,23 +308,20 @@ toggleButton.addEventListener("click", toggleHeartMode);
 function toggleHeartMode() {
    isHeartModeEnabled = !isHeartModeEnabled;
 
-   // Убрать класс "dead" у всех сердец при включении режима с сердцами
-   if (isHeartModeEnabled) {
-      hearts.forEach((heart) => {
-         heart.classList.remove("dead");
-      });
-   }
-
    toggleButton.classList.toggle("off", !isHeartModeEnabled);
 
-   setTimeout(() => {
-      const heartBlock = document.getElementById("heartBlock");
-      heartBlock.style.display = isHeartModeEnabled ? "flex" : "none";
+   const heartBlock = document.getElementById("heartBlock");
+   heartBlock.style.display = isHeartModeEnabled ? "flex" : "none";
 
-      if (isHeartModeEnabled) {
-         addMissed();
-      }
-   }, 100);
+   if (isHeartModeEnabled) {
+      addMissed();
+   }
+   if (isHeartModeEnabled) {
+      const deadHearts = document.querySelectorAll('.heart.dead');
+      deadHearts.forEach((heart) => {
+         heart.classList.remove('dead');
+      });
+   }
 }
 
 
