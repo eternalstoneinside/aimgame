@@ -72,6 +72,12 @@ button {
    right: 37px;
 }
 
+.btn-start-screen {
+   position: absolute;
+   bottom: 20px;
+   left: 20px;
+}
+
 .screen {
    display: flex;
    align-items: center;
@@ -178,7 +184,7 @@ h2 {
    flex: 1;
    background-color: #031e2e;
    overflow: hidden;
-   /* cursor: url("aim.png") 25 25, auto; */
+   cursor: crosshair;
 
 }
 
@@ -187,6 +193,7 @@ h2 {
    display: flex;
    justify-content: space-between;
    padding: 20px;
+   padding-left: 220px;
 }
 
 #minimize {
@@ -200,7 +207,17 @@ h2 {
    background-color: #29cef7;
    animation: circle 2s linear forwards;
    border-radius: 50%;
+   overflow: hidden;
+}
 
+.circle::before {
+   content: '';
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+   top: 0;
+   left: 0;
 }
 
 @keyframes circle {
@@ -227,35 +244,8 @@ h2 {
    margin-left: 10px;
 }
 
-/*---RESPONSIVENESS------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 767px) {
-   h1 {
-      font-size: 2rem;
-   }
-
-   .btn {
-      font-size: 1rem;
-   }
-
-   .stats {
-      gap: 20px;
-      flex-direction: column;
-   }
-
-   .stats div {
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-   }
-
-   .lives {
-      margin-bottom: 10px;
-   }
-}
 
 /*---start-screen---------------------------------------------------------------------------------------------------------------*/
-.start-screen {}
 
 .music-spotify {
    width: 500px;
@@ -280,6 +270,26 @@ h2 {
 
 /*---MAIN-BLOCK------------------------------------------------------------------------------------------------------------*/
 
+.miss-trail {
+   position: absolute;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 10px;
+   height: 10px;
+   pointer-events: none;
+   /* Игнорируем события мыши на следе промаха */
+}
+
+.miss-line {
+   position: absolute;
+   background-color: #ff0000;
+   /* Цвет линии (красный) */
+   width: 2px;
+   height: 10px;
+   transform-origin: center;
+   /* Устанавливаем точку вращения в центр */
+}
 
 /*---SECTION---------------------------------------------------------------------------------------------------------------*/
 
@@ -290,3 +300,55 @@ h2 {
 /*---SECTION---------------------------------------------------------------------------------------------------------------*/
 
 /*---SECTION---------------------------------------------------------------------------------------------------------------*/
+
+/*---RESPONSIVENESS------------------------------------------------------------------------------------------------------------*/
+@media (max-width: 767px) {
+   h1 {
+      font-size: 2rem;
+   }
+
+   .btn {
+      font-size: 1rem;
+   }
+
+   .stats {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+   }
+
+   .stats div {
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+
+   }
+
+   .lives {}
+
+   .music-spotify {
+      display: none;
+   }
+
+   .options {
+      padding-left: 170px;
+   }
+
+}
+
+@media (max-width: 950px) {
+   .music-spotify {
+      width: 310px;
+   }
+}
+
+@media (max-width: 500px) {
+   .results {
+      gap: 15px;
+   }
+
+   .options .btn-restart {
+      opacity: 0;
+   }
+}

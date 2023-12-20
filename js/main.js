@@ -9,12 +9,12 @@ const startBtn = document.querySelector("#start"),
    hitsOver = document.querySelector("#hits-over"),
    accuracyOver = document.querySelector("#accuracy-over"),
    hearts = document.querySelectorAll(".heart"),
-   restartBtns = document.querySelectorAll(".restart"),
+   restartBtns = document.querySelectorAll(".btn-restart"),
    fullScreenBtn = document.querySelector("#fullscreen"),
    minimizeBtn = document.querySelector("#minimize"),
-   backMenuBtn = document.querySelector(".btn-start-screen");
-
-
+   backMenuBtn = document.querySelector(".btn-start-screen"),
+   hitSound = document.getElementById("hitSound"),
+   missSound = document.getElementById("missSound");
 
 let time = 0,
    unlimited = false,
@@ -55,7 +55,7 @@ function startGame() {
 function decreaseTime() {
    if (unlimited) {
       //iff unlimiter selected
-      setTime("lala")
+      setTime("&#8734;")
       return;
    }
    if (time == 0) {
@@ -86,7 +86,7 @@ function createRandomCircle() {
 
    const circle = document.createElement("div");
    const size = getRandomNumber(30, 100);
-   const colors = ["#03dac6", "#ff0266", "#b3ff00", "#ccff00", "#9d00ff"];
+   // const colors = ["#29cef7"];
    const { width, height } = board.getBoundingClientRect();
    const x = getRandomNumber(0, width - size);
    const y = getRandomNumber(0, height - size);
@@ -96,8 +96,8 @@ function createRandomCircle() {
    circle.style.top = `${y}px`;
    circle.style.left = `${x}px`;
 
-   let color = Math.floor(Math.random() * 5);
-   circle.style.background = `${colors[color]}`;
+   // let color = Math.floor(Math.random() * 5);
+   // circle.style.background = `${colors[color]}`;
    board.append(circle);
 
    if (difficulty == 1) {
@@ -112,8 +112,10 @@ function createRandomCircle() {
       setTimeout(() => {
          circle.remove();
          createRandomCircle();
+         playMissSound();
          addMissed();
          calculateAccuracy();
+         createMissTrail(x + size / 2, y + size / 2);
       }, 100); // Уменьшили задержку перед появлением нового кружка
    });
 
@@ -121,17 +123,33 @@ function createRandomCircle() {
 
 
 board.addEventListener("click", (e) => {
+   const x = e.clientX - board.getBoundingClientRect().left;
+   const y = e.clientY - board.getBoundingClientRect().top;
+
    if (e.target.classList.contains("circle")) {
       hits++;
       e.target.remove();
       createRandomCircle();
+      playHitSound();
    } else {
       missed++;
+      playMissSound();
+      createMissTrail(x, y);
    }
 
    hitsEl.innerHTML = hits;
    calculateAccuracy();
 });
+
+function playHitSound() {
+   hitSound.currentTime = 0; // Устанавливаем currentTime в 0 для повторного воспроизведения
+   hitSound.play();
+}
+
+function playMissSound() {
+   missSound.currentTime = 0;
+   missSound.play();
+}
 
 function finishGame() {
    playing = false;
@@ -240,6 +258,7 @@ function minimize() {
 
 backMenuBtn.addEventListener("click", startScreen);
 
+
 function startScreen() {
    finishGame();
    screens[0].classList.remove("up");
@@ -256,6 +275,7 @@ function startScreen() {
    hearts.forEach((heart) => {
       heart.classList.remove("dead");
    });
+   // location.reload();
 }
 
 const toggleButton = document.getElementById("toggleButton");
@@ -287,3 +307,27 @@ function toggleHeartMode() {
 
 
 
+function createMissTrail(x, y) {
+   const missTrail = document.createElement("div");
+   missTrail.classList.add("miss-trail");
+   missTrail.style.top = `${y - 5}px`; // Учтем половину высоты
+   missTrail.style.left = `${x - 5}px`; // Учтем половину ширины
+   board.append(missTrail);
+
+   const line1 = document.createElement("div");
+   line1.classList.add("miss-line");
+   missTrail.appendChild(line1);
+
+   const line2 = document.createElement("div");
+   line2.classList.add("miss-line");
+   missTrail.appendChild(line2);
+
+   // Задаем стили для линий
+   line1.style.transform = "rotate(45deg)";
+   line2.style.transform = "rotate(-45deg)";
+
+   // Устанавливаем таймер для удаления следа промаха через некоторое время
+   setTimeout(() => {
+      missTrail.remove();
+   }, 1000);
+}
