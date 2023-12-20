@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Philosopher:700&display=swap");
+
 /*Обнуление*/
 * {
    padding: 0;
@@ -9,10 +11,11 @@
 html,
 body {
    height: 100vh;
-   color: #faebd7;
-   background-color: #1e1f26;
+   color: #fff;
+   background: linear-gradient(135deg, #2d313a, #1e1f26);
    overflow: hidden;
    text-align: center;
+   font-family: 'Philosopher', sans-serif;
 }
 
 input,
@@ -26,11 +29,12 @@ button {
 }
 
 .btn {
-   color: #faebd7;
-   border: 3px solid #faebd7;
+   color: #fff;
+   border: 3px solid #fff;
    padding: 0.5rem 1rem;
    font-size: 1.5rem;
-   background-color: transparent;
+   background: transparent;
+   transition: all .3s ease;
 }
 
 .btn:hover {
@@ -89,6 +93,13 @@ button {
    background-color: #011623;
 }
 
+
+
+.screen.up {
+   margin-top: -100vh;
+}
+
+
 ul,
 li {
    display: block;
@@ -117,16 +128,16 @@ img {
 h1 {
    font-size: 4rem;
    line-height: 2.4;
+   font-family: 'Philosopher', sans-serif;
 }
 
 h2 {
    font-size: 2rem;
    line-height: 2.4;
+   font-family: 'Philosopher', sans-serif;
 }
 
-.screen.up {
-   margin-top: -100vh;
-}
+
 
 .list {
    display: flex;
@@ -254,6 +265,7 @@ h2 {
    position: absolute;
    top: 4px;
    right: 0;
+   transition: opacity .9s ease-out;
 }
 
 .window-option {

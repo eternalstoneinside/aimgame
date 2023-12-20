@@ -15,7 +15,8 @@ const startBtn = document.querySelector("#start"),
    backMenuBtn = document.querySelector(".btn-start-screen"),
    hitSound = document.getElementById("hitSound"),
    missSound = document.getElementById("missSound"),
-   overlayTimer = document.getElementById("overlayTimer");
+   overlayTimer = document.getElementById("overlayTimer"),
+   player = document.querySelector('.music-spotify');
 
 let time = 0,
    unlimited = false,
@@ -52,7 +53,7 @@ difficultyList.addEventListener("click", (e) => {
       // Запускаем таймер на 3 секунды
       let countdown = 3;
       overlayTimer.innerHTML = countdown;
-
+      player.style.opacity = 0;
       const countdownInterval = setInterval(() => {
          countdown--;
 
@@ -175,6 +176,7 @@ function playMissSound() {
 
 function finishGame() {
    playing = false;
+   player.style.opacity = 1;
    clearInterval(interval);
    overlayTimer.style.pointerEvents = "auto";
    board.innerHTML = '';
