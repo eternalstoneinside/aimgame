@@ -1,0 +1,27 @@
+/* Добавьте следующие стили в ваш файл css/main.css */
+
+/* Стили для ввода никнейма */
+#nickname {
+   width: 500px;
+   padding: 10px;
+   margin: 10px 0;
+   box-sizing: border-box;
+   font-size: 16px;
+}
+
+/* Стили для кнопки сохранения никнейма */
+#saveNickname {
+   display: block;
+   margin: 10px 0;
+   padding: 12px 20px;
+   font-size: 18px;
+   background-color: #29cef7;
+   color: #fff;
+   border: none;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+#saveNickname:hover {
+   background-color: #1e8ab8;
+}
