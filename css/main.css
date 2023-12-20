@@ -38,6 +38,40 @@ button {
    border-color: #29cef7;
 }
 
+.btn-heart {
+   display: inline-block;
+   width: 72px;
+   height: 38px;
+   background: #118c4e;
+   z-index: 0;
+   margin: 0;
+   padding: 0;
+   border: none;
+   cursor: pointer;
+   position: relative;
+}
+
+.btn-heart.off {
+   background: #bfbfbf;
+}
+
+.btn-heart::after {
+   content: "";
+   height: 32px;
+   width: 32px;
+   background: #fff;
+   top: 3px;
+   right: 3px;
+   transition: right 300ms, background 300ms;
+   /* добавлен переход для background */
+   position: absolute;
+   z-index: 1;
+}
+
+.btn-heart.off::after {
+   right: 37px;
+}
+
 .screen {
    display: flex;
    align-items: center;
@@ -73,13 +107,14 @@ img {
    max-width: 100%;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+
+h1 {
    font-size: 4rem;
+   line-height: 2.4;
+}
+
+h2 {
+   font-size: 2rem;
    line-height: 2.4;
 }
 
@@ -100,11 +135,11 @@ h6 {
 
 .stats {
    display: flex;
-   flex-direction: column;
+
    align-items: start;
    width: 100%;
    gap: 10px;
-   padding: 20px 20px 20px 20px;
+   padding: 35px;
 }
 
 .stats div {
@@ -122,6 +157,7 @@ h6 {
    display: flex;
    gap: 10px;
    align-items: center;
+   margin-left: 10px;
 }
 
 .lives .heart {

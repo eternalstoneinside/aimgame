@@ -109,13 +109,12 @@ function createRandomCircle() {
    }
 
    circle.addEventListener('animationend', () => {
-      circle.remove()
-      createRandomCircle();
-
-      addMissed();
-
-      calculateAccuracy();
-
+      setTimeout(() => {
+         circle.remove();
+         createRandomCircle();
+         addMissed();
+         calculateAccuracy();
+      }, 100); // Уменьшили задержку перед появлением нового кружка
    });
 
 }
@@ -150,32 +149,26 @@ function finishGame() {
 
 
 function calculateAccuracy() {
-   accuracy = (hits / (hits + missed)) * 100;
-   accuracy = accuracy.toFixed();
+   if (hits + missed === 0) {
+      accuracy = 100;
+   } else {
+      accuracy = Math.round((hits / (hits + missed)) * 100);
+   }
    accuracyEl.innerHTML = `${accuracy}%`;
 }
 
 function addMissed() {
+   if (isHeartModeEnabled) {
+      // Найдем первое неживое сердце (без класса "dead")
+      const liveHeart = Array.from(hearts).find((heart) => !heart.classList.contains("dead"));
 
-   if (
-      hearts[0].classList.contains("dead") &&
-      hearts[1].classList.contains("dead") &&
-      hearts[2].classList.contains("dead")
-   ) {
-      finishGame();
-   }
-   else {
-      missed++;
-
-      for (let i = 0; i < hearts.length; i++) {
-         if (!hearts[i].classList.contains("dead")) {
-            hearts[i].classList.add("dead")
-
-            break;
-         }
+      if (!liveHeart) {
+         finishGame();
+      } else {
+         missed++;
+         liveHeart.classList.add("dead");
       }
    }
-
 }
 
 function getRandomNumber(min, max) {
@@ -189,6 +182,9 @@ restartBtns.forEach((btn) => {
 
 function restartGame() {
    finishGame();
+   hearts.forEach((heart) => {
+      heart.classList.remove("dead");
+   });
    screens[1].classList.remove("up");
    screens[2].classList.remove("up");
    screens[3].classList.remove("up");
@@ -199,9 +195,7 @@ function restartGame() {
    accuracy = 0;
    playing = false;
    unlimited = false;
-   hearts.forEach((heart) => {
-      heart.classList.remove("dead");
-   });
+   accuracyEl.innerHTML = "100%";
 }
 
 
@@ -263,3 +257,33 @@ function startScreen() {
       heart.classList.remove("dead");
    });
 }
+
+const toggleButton = document.getElementById("toggleButton");
+let isHeartModeEnabled = true; // Флаг, определяющий, включен ли режим с сердцами
+
+toggleButton.addEventListener("click", toggleHeartMode);
+
+function toggleHeartMode() {
+   isHeartModeEnabled = !isHeartModeEnabled;
+
+   // Убрать класс "dead" у всех сердец при включении режима с сердцами
+   if (isHeartModeEnabled) {
+      hearts.forEach((heart) => {
+         heart.classList.remove("dead");
+      });
+   }
+
+   toggleButton.classList.toggle("off", !isHeartModeEnabled);
+
+   setTimeout(() => {
+      const heartBlock = document.getElementById("heartBlock");
+      heartBlock.style.display = isHeartModeEnabled ? "flex" : "none";
+
+      if (isHeartModeEnabled) {
+         addMissed();
+      }
+   }, 100);
+}
+
+
+

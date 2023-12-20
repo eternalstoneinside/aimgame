@@ -21,6 +21,9 @@
    <meta name="theme-color" content="#F2718E">
    <link rel="apple-touch-icon" href="img/head/apple-touch-icon.png">
    <link rel="icon" type="image/png" href="img/head/favicon.png">
+   <!-- Audio -->
+   <!-- <audio id="hitSound" src="sound/hitSound.mp3"></audio>
+   <audio id="missSound" src="sound/missSound.mp3"></audio> -->
    <!-- Fonts -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +70,7 @@
    </div>
    <div class="screen ">
       <h1>Choose Difficulty</h1>
-      <ul class="list" id="difficulty-list">
+      <ul class="list " id="difficulty-list">
          <li>
             <button class="btn difficulty-btn" data-difficulty="0">easy</button>
          </li>
@@ -78,6 +81,8 @@
             <button class="btn difficulty-btn" data-difficulty="2">hard</button>
          </li>
       </ul>
+      <h2>Heart mode</h2>
+      <button class="btn-heart" id="toggleButton"></button>
    </div>
    <div class="screen ">
       <div class="stats">
@@ -86,7 +91,7 @@
             <p>Hits: <span id="hits">0</span></p>
             <p>Accuracy: <span id="accuracy">100%</span></p>
          </div>
-         <div class="lives">
+         <div class="lives" id="heartBlock">
             <img src="img/heart.png" alt="" class="heart">
             <img src="img/heart.png" alt="" class="heart">
             <img src="img/heart.png" alt="" class="heart">
@@ -109,6 +114,7 @@
       <button class="btn restart">Restart</button>
       <button class="btn btn-start-screen">Back to menu</button>
    </div>
+
    <script src="js/main.js"></script>
 </body>
 
