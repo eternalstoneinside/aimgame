@@ -14,7 +14,8 @@ const startBtn = document.querySelector("#start"),
    minimizeBtn = document.querySelector("#minimize"),
    backMenuBtn = document.querySelector(".btn-start-screen"),
    hitSound = document.getElementById("hitSound"),
-   missSound = document.getElementById("missSound");
+   missSound = document.getElementById("missSound"),
+   overlayTimer = document.getElementById("overlayTimer");
 
 let time = 0,
    unlimited = false,
@@ -43,7 +44,28 @@ difficultyList.addEventListener("click", (e) => {
    if (e.target.classList.contains("difficulty-btn")) {
       difficulty = parseInt(e.target.getAttribute("data-difficulty"));
       screens[2].classList.add("up");
-      startGame();
+
+      document.body.style.pointerEvents = "none";
+
+      overlayTimer.style.display = "flex";
+
+      // Запускаем таймер на 3 секунды
+      let countdown = 3;
+      overlayTimer.innerHTML = countdown;
+
+      const countdownInterval = setInterval(() => {
+         countdown--;
+
+         if (countdown >= 0) {
+            overlayTimer.innerHTML = countdown;
+         } else {
+            // Скрываем таймер, разблокируем взаимодействие и запускаем игру
+            overlayTimer.style.display = "none";
+            clearInterval(countdownInterval);
+            document.body.style.pointerEvents = "auto";
+            startGame();
+         }
+      }, 1000);
    }
 });
 
@@ -62,7 +84,7 @@ function decreaseTime() {
       //game over
       finishGame();
    }
-   let currunt = --time;
+   let current = --time;
    let miliseconds = time * 1000;
 
    let minutes = Math.floor(miliseconds / (1000 * 60));
@@ -154,6 +176,7 @@ function playMissSound() {
 function finishGame() {
    playing = false;
    clearInterval(interval);
+   overlayTimer.style.pointerEvents = "auto";
    board.innerHTML = '';
    screens[3].classList.add("up");
    hitsEl.innerHTML = 0;
