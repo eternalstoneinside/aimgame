@@ -36,7 +36,7 @@ button {
    background: transparent;
    transition: all .3s ease;
 }
-.btn-ranked {
+.ranked-btn {
    user-select: none;
    pointer-events: none;
    background-color: #666;
