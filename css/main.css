@@ -36,7 +36,11 @@ button {
    background: transparent;
    transition: all .3s ease;
 }
-
+.btn-ranked {
+   user-select: none;
+   pointer-events: none;
+   background-color: #666;
+}
 .btn:hover {
    color: #29cef7;
    border-color: #29cef7;
