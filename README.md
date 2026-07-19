@@ -1,92 +1,47 @@
-# AIM Game - Browser Aim Trainer
+# AIM Game
 
-A fast browser-based aim trainer game focused on reaction speed and precision.
+A fast browser aim trainer focused on reaction speed, accuracy, and repeatable practice.
 
-## Live Demo
-
-- https://eternalstoneinside.github.io/aimgame/
-
-## Repository
-
-- https://github.com/eternalstoneinside/aimgame
+[Live demo](https://eternalstoneinside.github.io/aimgame/)
 
 ## Overview
 
-AIM Game is a lightweight web game where players improve mouse accuracy and reaction time through timed sessions and difficulty presets.
+AIM Game provides short, configurable training sessions in a dependency-free browser experience. Players can choose a duration and difficulty, track hits and accuracy in real time, and use a dedicated ranked mode.
 
-## Features
+## Highlights
 
-- Multiple time modes: 10s, 30s, 1m, 2m, unlimited
-- Difficulty levels: easy, medium, hard
-- Hit and accuracy tracking in real time
-- Ranked mode
-- Fullscreen gameplay support
-- Game over and restart flow
+- 10-second, 30-second, one-minute, two-minute, and unlimited modes
+- Easy, medium, and hard difficulty presets
+- Real-time hit and accuracy tracking
+- Dedicated ranked experience
+- Fullscreen gameplay
+- Sound feedback and restart flow
 
-## Tech Stack
+## Tech stack
 
-- HTML
-- CSS
-- JavaScript (Vanilla)
+HTML5 · CSS3 · JavaScript
 
-## Run Locally
-
-1. Clone the repository:
+## Run locally
 
 ```bash
 git clone https://github.com/eternalstoneinside/aimgame.git
 cd aimgame
-```
-
-2. Start a local server:
-
-```bash
-# Python 3
 python -m http.server 8000
 ```
 
-3. Open:
+Open [http://localhost:8000](http://localhost:8000).
 
-- http://localhost:8000
-
-## Project Structure
+## Project structure
 
 ```text
-aimgame/
-|- index.html
-|- css/
-|- js/
-|- img/
-|- sound/
-`- ranked/
+index.html       Main game
+css/             Interface styling
+js/              Game logic
+ranked/          Ranked mode
+img/             Visual assets
+sound/           Audio feedback
 ```
-
-## Screenshots
-
-Add images to repository, for example:
-
-- img/preview-main.png
-- img/preview-ranked.png
-
-Then reference them:
-
-```md
-![AIM Game Main](img/preview-main.png)
-![AIM Game Ranked](img/preview-ranked.png)
-```
-
-## Roadmap
-
-- Add leaderboard persistence
-- Add sensitivity settings
-- Add session analytics and personal best stats
-- Improve keyboard accessibility and focus states
 
 ## Author
 
-- Dmytro Orlenko
-- GitHub: https://github.com/eternalstoneinside
-
-## License
-
-If needed, add an MIT license file.
+Designed and developed by [Dmytro Orlenko](https://github.com/eternalstoneinside).
